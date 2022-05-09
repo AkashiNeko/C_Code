@@ -1,9 +1,8 @@
 //*********************************************************//
 //                                                         //
 //      data:   2022-5-8                                   //
-//      author: Akashi (·ú·ú)                              //
+//      author: Akashi (æ°Ÿæ°Ÿ)                              //
 //      github: https://github.com/AkashiNeko/C_Code       //
-//      gitee:  https://gitee.com/AkashiNeko/C_Code        //
 //      QQ:     1006554341                                 //
 //                                                         //
 //*********************************************************//
@@ -29,24 +28,24 @@ void setcl(int color)
 int game(short map[COL_MAX][COL_MAX], int size, int mine)
 {
 	int play_ret;
-	//´òÓ¡µØÍ¼
+	//æ‰“å°åœ°å›¾
 	do
 	{
-		short display[COL_MAX][COL_MAX]; //ÊÇ·ñÏÔÊ¾£¨ÕÚÕÖ£©
+		short display[COL_MAX][COL_MAX]; //æ˜¯å¦æ˜¾ç¤ºï¼ˆé®ç½©ï¼‰
 		print_map(map, size, display);
 		memset(display, 0, sizeof(display));
-		memset(map, 0, sizeof(display)); //³õÊ¼»¯
-		//ÉèÖÃÀ×
+		memset(map, 0, sizeof(display)); //åˆå§‹åŒ–
+		//è®¾ç½®é›·
 		set_mine(map, size, mine);
 
-		//³õÊ¼ÇøÓò
+		//åˆå§‹åŒºåŸŸ
 		initial_area(map, size, display);
 
-		//Íæ¼Ò²Ù×÷
+		//ç©å®¶æ“ä½œ
 		play_ret = play(map, size, display);
-		if (play_ret == 1) //ÍË³ö
+		if (play_ret == 1) //é€€å‡º
 			return 1;
-		if (play_ret == 2) //ÖØ¿ª
+		if (play_ret == 2) //é‡å¼€
 			continue;
 	} while (1);
 
@@ -57,14 +56,14 @@ int main()
 	short map[COL_MAX][COL_MAX];
 	int size = 15, mine = 50, game_ret;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
-	system("title É¨À×       By AkashiNeko");
-	memset(map, 0, sizeof(map)); //³õÊ¼»¯
+	system("title æ‰«é›·       By AkashiNeko");
+	memset(map, 0, sizeof(map)); //åˆå§‹åŒ–
 	setcl(0x0f);
 start:
 	switch (menu())
 	{
 	case 0:
-		//¿ªÊ¼
+		//å¼€å§‹
 		game_ret = game(map, size, mine);
 		if (game_ret)
 		{
@@ -74,14 +73,14 @@ start:
 		}
 		break;
 	case 1:
-		//ÉèÖÃ
+		//è®¾ç½®
 		menu_set(&size, &mine);
 		setcl(0x0f);
 		system("cls");
 		goto start;
 		break;
 	case 2:
-		//ÍË³ö
+		//é€€å‡º
 		return 0;
 	}
 	return 0;
