@@ -5,29 +5,29 @@ int menu()
 	char ch, select = 0;
 	setrd(2, 2);
 	setcl(MENU_COLOR);
-	printf("==== É¨À× ====");
+	printf("==== æ‰«é›· ====");
 	setrd(2, 10);
 	setcl(TIP_COLOR);
-	printf("[¡ü][¡ı] ÒÆ¶¯");
+	printf("[â†‘][â†“] ç§»åŠ¨");
 	setrd(2, 12);
-	printf("[Enter] Ñ¡Ôñ");
+	printf("[Enter] é€‰æ‹©");
 
 	print_menu:
 
 	setrd(4, 4);
 	if (select == 0) setcl(SEL_COLOR);
 	else setcl(MENU_COLOR);
-	printf(" 1. ¿ªÊ¼ ");
+	printf(" 1. å¼€å§‹ ");
 
 	setrd(4, 6);
 	if (select == 1) setcl(SEL_COLOR);
 	else setcl(MENU_COLOR);
-	printf(" 2. ÉèÖÃ ");
+	printf(" 2. è®¾ç½® ");
 
 	setrd(4, 8);
 	if (select == 2) setcl(SEL_COLOR);
 	else setcl(MENU_COLOR);
-	printf(" 3. ÍË³ö ");
+	printf(" 3. é€€å‡º ");
 
 	setrd(0, 0);
 	while (1)
@@ -35,18 +35,18 @@ int menu()
         if (_kbhit())
             switch (ch = _getch())
             {
-            case -32: //·½Ïò¼ü
+            case -32: //æ–¹å‘é”®
                 ch = _getch();
                 switch(ch)
 				{
-				case 72: //ÉÏ
+				case 72: //ä¸Š
 					if (select == 0)
 						select = 2;
 					else
 						select--;
 					goto print_menu;
 					break;
-				case 80: //ÏÂ
+				case 80: //ä¸‹
 					if (select == 2)
 						select = 0;
 					else
@@ -57,7 +57,7 @@ int menu()
 					break;
 				}
 				break;
-			case 13: //»Ø³µ
+			case 13: //å›è½¦
 				setcl(0x0f);
 				system("cls");
 				return select;
@@ -84,7 +84,7 @@ void clear_tips(int size)
 	setrd(3, size + 4);
 	setcl(0x0f);
 	printf("                        ");
-	//ÓÃ¿Õ¸ñ¸²¸Ç
+	//ç”¨ç©ºæ ¼è¦†ç›–
 }
 
 void menu_set(int* psize, int* pmine)
@@ -92,10 +92,10 @@ void menu_set(int* psize, int* pmine)
 	char ch, select = 0;
 	setrd(2, 2);
 	setcl(MENU_COLOR);
-	printf("==== ÉèÖÃ ====");
+	printf("==== è®¾ç½® ====");
 	setcl(TIP_COLOR);
 	setrd(2, 16);
-	printf("[ESC]     ·µ»Ø   ");
+	printf("[ESC]     è¿”å›   ");
 	goto select_menu;
 
 print_menu_set:
@@ -103,7 +103,7 @@ print_menu_set:
 	setrd(3, 4);
 	if (select == 0) setcl(SEL_COLOR);
 	else setcl(MENU_COLOR);
-	printf("µØÍ¼´óĞ¡");
+	printf("åœ°å›¾å¤§å°");
 
 	setrd(13, 4);
 	if (select == 3) setcl(0x1b);
@@ -115,7 +115,7 @@ print_menu_set:
 	setrd(3, 6);
 	if (select == 1) setcl(SEL_COLOR);
 	else setcl(MENU_COLOR);
-	printf("µØÀ×¸öÊı");
+	printf("åœ°é›·ä¸ªæ•°");
 
 	setrd(13, 6);
 	if(select == 4) setcl(0x1b);
@@ -127,7 +127,7 @@ print_menu_set:
 	setrd(3, 8);
 	if (select == 2) setcl(SEL_COLOR);
 	else setcl(MENU_COLOR);
-	printf("·µ»Ø²Ëµ¥");
+	printf("è¿”å›èœå•");
 
 	setrd(0, 0);
 	while (1)
@@ -136,11 +136,11 @@ print_menu_set:
 		{
 			switch (ch = _getch())
 			{
-			case -32: //·½Ïò¼ü
+			case -32: //æ–¹å‘é”®
 				ch = _getch();
 				switch (ch)
 				{
-				case 72: //ÉÏ
+				case 72: //ä¸Š
 					switch (select)
 					{
 					case 0: select = 2; break;
@@ -165,7 +165,7 @@ print_menu_set:
 					}
 					goto print_menu_set;
 					break;
-				case 80: //ÏÂ
+				case 80: //ä¸‹
 					switch (select)
 					{
 					case 0: select = 1; break;
@@ -184,13 +184,13 @@ print_menu_set:
 					goto print_menu_set;
 				default:
 					break;
-				case 75:  //×ó
-				case 77:; //ÓÒ
+				case 75:  //å·¦
+				case 77:; //å³
 				}
-			case 13:	  //»Ø³µ
+			case 13:	  //å›è½¦
 				switch (select)
 				{
-				case 2: //·µ»Ø
+				case 2: //è¿”å›
 					return;
 				case 0: select = 3;
 					goto edit_num;
@@ -204,20 +204,20 @@ print_menu_set:
 			edit_num:
 				setcl(TIP_COLOR);
 				setrd(2, 10);
-				printf("[¡ü][¡ı]  Ôö/¼õ");
+				printf("[â†‘][â†“]  å¢/å‡");
 				setrd(2, 12);
-				printf("[¡û]      È·¶¨ ");
+				printf("[â†]      ç¡®å®š ");
 				setrd(2, 14);
-				printf("[Enter]   È·¶¨ ");
+				printf("[Enter]   ç¡®å®š ");
 				goto print_menu_set;
 			select_menu:
 				setcl(TIP_COLOR);
 				setrd(2, 10);
-				printf("[¡ü][¡ı]  ÒÆ¶¯  ");
+				printf("[â†‘][â†“]  ç§»åŠ¨  ");
 				setrd(2, 12);
-				printf("[¡ú]      Ñ¡Ôñ ");
+				printf("[â†’]      é€‰æ‹© ");
 				setrd(2, 14);
-				printf("[Enter]   Ñ¡Ôñ  ");
+				printf("[Enter]   é€‰æ‹©  ");
 				goto print_menu_set;
 			case 27: //ESC
 				return;
@@ -248,27 +248,27 @@ void set_mine(short map[COL_MAX][COL_MAX], int size, int mine)
 			if (map[i][j] == 9)
 				continue;
 			int num[8] = { 0,0,0,0,0,0,0,0 };
-			if (i == 0) //ÉÏ±ß½ç
+			if (i == 0) //ä¸Šè¾¹ç•Œ
 				a = i + 1;
-			else if (i == size - 1) //ÏÂ±ß½ç
+			else if (i == size - 1) //ä¸‹è¾¹ç•Œ
 				a = i - 1;
-			else //É¨ÃèÎ»ÖÃÎ»ÓÚ·ÇÉÏÏÂ±ß½ç´¦
+			else //æ‰«æä½ç½®ä½äºéä¸Šä¸‹è¾¹ç•Œå¤„
 			{
 				num[0] = map[i - 1][j];
 				num[4] = map[i + 1][j];
-				if (j == 0) //·Ç½Ç×ó±ß½ç 5
+				if (j == 0) //éè§’å·¦è¾¹ç•Œ 5
 				{
 					num[1] = map[i - 1][j + 1];
 					num[2] = map[i][j + 1];
 					num[3] = map[i + 1][j + 1];
 				}
-				else if (i == size - 1) //·Ç½ÇÓÒ±ß½ç 5
+				else if (i == size - 1) //éè§’å³è¾¹ç•Œ 5
 				{
 					num[1] = map[i - 1][j - 1];
 					num[2] = map[i][j - 1];
 					num[3] = map[i + 1][j - 1];
 				}
-				else //ÖĞ¼äÇøÓò 8
+				else //ä¸­é—´åŒºåŸŸ 8
 				{
 					for (b = 0; b < 3; b++)
 					{
@@ -278,19 +278,19 @@ void set_mine(short map[COL_MAX][COL_MAX], int size, int mine)
 				}
 				goto mid;
 			}
-			//É¨ÃèÎ»ÖÃÎ»ÓÚÉÏÏÂ±ß½ç´¦
+			//æ‰«æä½ç½®ä½äºä¸Šä¸‹è¾¹ç•Œå¤„
 			num[2] = map[a][j];
-			if (j == 0) //×ó½Ç 3
+			if (j == 0) //å·¦è§’ 3
 			{
 				num[0] = map[i][j + 1];
 				num[1] = map[a][j + 1];
 			}
-			else if (j == size - 1) //ÓÒ½Ç 3
+			else if (j == size - 1) //å³è§’ 3
 			{
 				num[0] = map[i][j - 1];
 				num[1] = map[a][j - 1];
 			}
-			else //·Ç½Ç±ß½ç 5
+			else //éè§’è¾¹ç•Œ 5
 			{
 				num[0] = map[i][j - 1];
 				num[1] = map[i][j + 1];
@@ -308,86 +308,86 @@ void set_mine(short map[COL_MAX][COL_MAX], int size, int mine)
 void print_map(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 {
 	int i, j;
-	char col[19] = "£±£²£³£´£µ£¶£·£¸£¹"; //È«½ÇÊı×Ö
-	char row[41] = "£Á£Â£Ã£Ä£Å£Æ£Ç£È£É£Ê£Ë£Ì£Í£Î£Ï£Ğ£Ñ£Ò£Ó£Ô"; //È«½Ç×ÖÄ¸
+	char col[19] = "ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™"; //å…¨è§’æ•°å­—
+	char row[41] = "ï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´"; //å…¨è§’å­—æ¯
 	setcl(MAP_COLOR);
-	for (i = 0; i < size; i++) //´òÓ¡×óÓÒ±ß½ç
+	for (i = 0; i < size; i++) //æ‰“å°å·¦å³è¾¹ç•Œ
 	{
-		setrd(2, i + 2);//×ó±ß½ç
-		if (i < 9) // i+1<10 ´òÓ¡È«½ÇÊı×Ö
+		setrd(2, i + 2);//å·¦è¾¹ç•Œ
+		if (i < 9) // i+1<10 æ‰“å°å…¨è§’æ•°å­—
 			printf("%c%c", col[2 * i], col[2 * i + 1]);
-		else //i+1>=10 ´òÓ¡°ë½ÇÊı×Ö
+		else //i+1>=10 æ‰“å°åŠè§’æ•°å­—
 			printf("%d", i + 1);
 		setrd(4 + 2 * size, i + 2);
-		printf("¡¡"); //ÓÒ±ß½ç
+		printf("ã€€"); //å³è¾¹ç•Œ
 	}
-	setrd(2, 1); //´òÓ¡×óÉÏ½Ç
-	printf("¡¡");
-	for (i = 0; i < size; i++) //´òÓ¡ÉÏ±ß½ç
+	setrd(2, 1); //æ‰“å°å·¦ä¸Šè§’
+	printf("ã€€");
+	for (i = 0; i < size; i++) //æ‰“å°ä¸Šè¾¹ç•Œ
 		printf("%c%c", row[2 * i], row[2 * i + 1]);
 	setrd(4, size + 2);
-	for (i = 0; i < size + 1; i++) //´òÓ¡ÏÂ±ß½ç
-		printf("¡¡");
-	setrd(2, 2 + size); //´òÓ¡×óÏÂ½Ç
-	printf("¡¡");
-	setrd(4 + 2 * size, 1); //´òÓ¡ÓÒÉÏ½Ç
-	printf("¡¡");
-	//´òÓ¡ÖĞ¼äÇøÓò
+	for (i = 0; i < size + 1; i++) //æ‰“å°ä¸‹è¾¹ç•Œ
+		printf("ã€€");
+	setrd(2, 2 + size); //æ‰“å°å·¦ä¸‹è§’
+	printf("ã€€");
+	setrd(4 + 2 * size, 1); //æ‰“å°å³ä¸Šè§’
+	printf("ã€€");
+	//æ‰“å°ä¸­é—´åŒºåŸŸ
 	setcl(UNKNOW_COLOR);
 	for (i = 0; i < size; i++)
 	{
 		setrd(4, i + 2);
 		for (j = 0; j < size; j++)
-			printf("¡¡");
+			printf("ã€€");
 	}
 	setcl(MENU_COLOR);
 	setrd(12 + size * 2, 2);
-	printf("[¡ü]");
+	printf("[â†‘]");
 	setrd(8 + size * 2, 4);
-	printf("[¡û][¡ı][¡ú]");
+	printf("[â†][â†“][â†’]");
 	setrd(8 + size * 2, 6);
-	printf("°´·½Ïò¼üÒÆ¶¯");
+	printf("æŒ‰æ–¹å‘é”®ç§»åŠ¨");
 	setrd(9 + size * 2, 8);
-	printf("[£Ú]  ±ê¼Ç");
+	printf("[ï¼º]  æ ‡è®°");
 	setrd(9 + size * 2, 10);
-	printf("[£Ø]  ÅÅÀ×");
+	printf("[ï¼¸]  æ’é›·");
 	setrd(9 + size * 2, 12);
-	printf("[£Ò]  ÖØ¿ª");
+	printf("[ï¼²]  é‡å¼€");
 	setrd(9 + size * 2, 14);
-	printf("[£Å]  ÍË³ö");
+	printf("[ï¼¥]  é€€å‡º");
 }
 
 void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state, short display[COL_MAX][COL_MAX])
 {
 	int i, j;
-	char num[17] = "£±£²£³£´£µ£¶£·£¸";
+	char num[17] = "ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜";
 	if (state)
 	{
-		print_tips(size, 0x0a, "ÅÅÀ×³É¹¦!");
-		char col[19] = "£±£²£³£´£µ£¶£·£¸£¹"; //È«½ÇÊı×Ö
-		char row[41] = "£Á£Â£Ã£Ä£Å£Æ£Ç£È£É£Ê£Ë£Ì£Í£Î£Ï£Ğ£Ñ£Ò£Ó£Ô"; //È«½Ç×ÖÄ¸
+		print_tips(size, 0x0a, "æ’é›·æˆåŠŸ!");
+		char col[19] = "ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™"; //å…¨è§’æ•°å­—
+		char row[41] = "ï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´"; //å…¨è§’å­—æ¯
 		setcl(0xaf);
-		for (i = 0; i < size; i++) //´òÓ¡×óÓÒ±ß½ç
+		for (i = 0; i < size; i++) //æ‰“å°å·¦å³è¾¹ç•Œ
 		{
-			setrd(2, i + 2);//×ó±ß½ç
-			if (i < 9) // i+1<10 ´òÓ¡È«½ÇÊı×Ö
+			setrd(2, i + 2);//å·¦è¾¹ç•Œ
+			if (i < 9) // i+1<10 æ‰“å°å…¨è§’æ•°å­—
 				printf("%c%c", col[2 * i], col[2 * i + 1]);
-			else //i+1>=10 ´òÓ¡°ë½ÇÊı×Ö
+			else //i+1>=10 æ‰“å°åŠè§’æ•°å­—
 				printf("%d", i + 1);
 			setrd(4 + 2 * size, i + 2);
-			printf("¡¡"); //ÓÒ±ß½ç
+			printf("ã€€"); //å³è¾¹ç•Œ
 		}
-		setrd(2, 1); //´òÓ¡×óÉÏ½Ç
-		printf("¡¡");
-		for (i = 0; i < size; i++) //´òÓ¡ÉÏ±ß½ç
+		setrd(2, 1); //æ‰“å°å·¦ä¸Šè§’
+		printf("ã€€");
+		for (i = 0; i < size; i++) //æ‰“å°ä¸Šè¾¹ç•Œ
 			printf("%c%c", row[2 * i], row[2 * i + 1]);
 		setrd(4, size + 2);
-		for (i = 0; i < size + 1; i++) //´òÓ¡ÏÂ±ß½ç
-			printf("¡¡");
-		setrd(2, 2 + size); //´òÓ¡×óÏÂ½Ç
-		printf("¡¡");
-		setrd(4 + 2 * size, 1); //´òÓ¡ÓÒÉÏ½Ç
-		printf("¡¡");
+		for (i = 0; i < size + 1; i++) //æ‰“å°ä¸‹è¾¹ç•Œ
+			printf("ã€€");
+		setrd(2, 2 + size); //æ‰“å°å·¦ä¸‹è§’
+		printf("ã€€");
+		setrd(4 + 2 * size, 1); //æ‰“å°å³ä¸Šè§’
+		printf("ã€€");
 		for (i = 0; i < size; i++)
 		{
 			for (j = 0; j < size; j++)
@@ -407,7 +407,7 @@ void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state, short disp
 	}
 	else
 	{
-		print_tips(size, 0x0c, "ÅÅÀ×Ê§°Ü!");
+		print_tips(size, 0x0c, "æ’é›·å¤±è´¥!");
 		for (i = 0; i < size; i++)
 		{
 			for (j = 0; j < size; j++)
@@ -415,17 +415,17 @@ void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state, short disp
 				if (display[i][j] == 2 || map[i][j] == 9)
 				{
 					setrd(4 + j * 2, i + 2);
-					if (display[i][j] == 2 && map[i][j] != 9)		 //±ê¼Ç´íÎó
+					if (display[i][j] == 2 && map[i][j] != 9)		 //æ ‡è®°é”™è¯¯
 					{
 						setcl(0xfc);
 						printf(SIGN_MINE);
 					}
-					else if (display[i][j] != 2 && map[i][j] == 9)	 //À×Î´±ê¼Ç
+					else if (display[i][j] != 2 && map[i][j] == 9)	 //é›·æœªæ ‡è®°
 					{
 						setcl(0x40);
 						printf(MINE);
 					}
-					else											 //±ê¼ÇÕıÈ·
+					else											 //æ ‡è®°æ­£ç¡®
 					{
 						setcl(0xa0);
 						printf(MINE);
@@ -445,8 +445,8 @@ void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state, short disp
 void print_ele(short map[COL_MAX][COL_MAX], int i, int j)
 {
 	setrd(4 + j * 2, i + 2);
-	//È«½ÇÊı×Ö ÓÃÓÚÏÔÊ¾À×µÄÊıÁ¿
-	char num[17] = "£±£²£³£´£µ£¶£·£¸";
+	//å…¨è§’æ•°å­— ç”¨äºæ˜¾ç¤ºé›·çš„æ•°é‡
+	char num[17] = "ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜";
 	if (map[i][j] == 0)
 	{
 		setcl(BG_COLOR);
@@ -472,7 +472,7 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 		int x;
 		int y;
 	}plr; //player
-	//ÉèÖÃÍæ¼Ò³õÊ¼×ø±ê
+	//è®¾ç½®ç©å®¶åˆå§‹åæ ‡
 	plr.x = size / 2;
 	plr.y = size / 2;
 	print_plrcr(plr.x, plr.y, map, display, 1);
@@ -486,40 +486,40 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 				if (over)
 					break;
 				ch = _getch();
-				print_plrcr(plr.x, plr.y, map, display, 0); //Çå³ıÔ­Î»ÖÃ
+				print_plrcr(plr.x, plr.y, map, display, 0); //æ¸…é™¤åŸä½ç½®
 				switch (ch)
 				{
-				case 72: //ÉÏ
+				case 72: //ä¸Š
 					if (plr.x == 0)
 						plr.x = size - 1;
 					else
 						plr.x--;
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "ÏòÉÏÒÆ¶¯");
+					print_tips(size, 0x07, "å‘ä¸Šç§»åŠ¨");
 					break;
-				case 80: //ÏÂ
+				case 80: //ä¸‹
 					if (plr.x == size - 1)
 						plr.x = 0;
 					else
 						plr.x++;
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "ÏòÏÂÒÆ¶¯");
+					print_tips(size, 0x07, "å‘ä¸‹ç§»åŠ¨");
 					break;
-				case 75: //×ó
+				case 75: //å·¦
 					if (plr.y == 0)
 						plr.y = size - 1;
 					else
 						plr.y--;
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "Ïò×óÒÆ¶¯");
+					print_tips(size, 0x07, "å‘å·¦ç§»åŠ¨");
 					break;
-				case 77: //ÓÒ
+				case 77: //å³
 					if (plr.y == size - 1)
 						plr.y = 0;
 					else
 						plr.y++;
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "ÏòÓÒÒÆ¶¯");
+					print_tips(size, 0x07, "å‘å³ç§»åŠ¨");
 					break;
 				}
 				break;
@@ -536,18 +536,18 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 				case 2:
 					display[plr.x][plr.y] = 0;
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "È¡Ïû±ê¼Ç");
+					print_tips(size, 0x07, "å–æ¶ˆæ ‡è®°");
 					break;
 				case 0:
 					display[plr.x][plr.y] = 2;
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "±ê¼ÇÀ×");
+					print_tips(size, 0x07, "æ ‡è®°é›·");
 					break;
 				case 1:
-					print_tips(size, 0x0c, "¸ÃÎ»ÖÃÎŞ·¨±ê¼ÇÀ×");
+					print_tips(size, 0x0c, "è¯¥ä½ç½®æ— æ³•æ ‡è®°é›·");
 					break;
 				}
-				if (state(map, display, size)) //ÅÅÀ×³É¹¦
+				if (state(map, display, size)) //æ’é›·æˆåŠŸ
 				{
 					print_all_mine(map, size, 1, display);
 					over = 1;
@@ -569,18 +569,18 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 						over = 1;
 						break;
 					}
-					else //ÎŞÀ×´¦£¬ËÑË÷ËÄÖÜ
+					else //æ— é›·å¤„ï¼Œæœç´¢å››å‘¨
 					{
 						mine_clearance(plr.x, plr.y, map, display, size);
 					}
 					print_plrcr(plr.x, plr.y, map, display, 1);
-					print_tips(size, 0x07, "ÅÅÀ×");
+					print_tips(size, 0x07, "æ’é›·");
 					break;
 				case 1:
-					print_tips(size, 0x0c, "¸ÃÎ»ÖÃÒÑ±»ÅÅ²é¹ıÁË");
+					print_tips(size, 0x0c, "è¯¥ä½ç½®å·²è¢«æ’æŸ¥è¿‡äº†");
 					break;
 				case 2:
-					print_tips(size, 0x0c, "ÇëÏÈ°´[£Ú]È¡Ïû±ê¼Ç");
+					print_tips(size, 0x0c, "è¯·å…ˆæŒ‰[ï¼º]å–æ¶ˆæ ‡è®°");
 					break;
 				}
 				break;
@@ -599,15 +599,15 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 
 void print_plrcr(int x, int y, short map[COL_MAX][COL_MAX], short display[COL_MAX][COL_MAX], int plr)
 {
-	char num[17] = "£±£²£³£´£µ£¶£·£¸";
+	char num[17] = "ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜";
 	setrd(4 + y * 2, 2 + x);
-	if (plr == 1) //·ÅÖÃÓÃ»§²Ù×÷
+	if (plr == 1) //æ”¾ç½®ç”¨æˆ·æ“ä½œ
 	{
 		switch (display[x][y])
 		{
 		case 0:
 			setcl(PLR_COLOR);
-			printf("¡¡");
+			printf("ã€€");
 			break;
 		case 1:
 			if (map[x][y] == 0)
@@ -633,7 +633,7 @@ void print_plrcr(int x, int y, short map[COL_MAX][COL_MAX], short display[COL_MA
 		{
 		case 0:
 			setcl(UNKNOW_COLOR);
-			printf("¡¡");
+			printf("ã€€");
 			break;
 		case 1:
 			print_ele(map, x, y);
@@ -652,7 +652,7 @@ void initial_area(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][
 	int i, j, r, zero = 0;
 	short arr[400][2];
 	srand((unsigned)time(NULL));
-	for (i = 0; i < size; i++) //ÅĞ¶ÏÊÇ·ñÓĞ¿ÕÎ»
+	for (i = 0; i < size; i++) //åˆ¤æ–­æ˜¯å¦æœ‰ç©ºä½
 	{
 		for (j = 0; j < size; j++)
 		{
@@ -681,7 +681,7 @@ void mine_clearance(int x, int y, short map[COL_MAX][COL_MAX], short display[COL
 	if (map[x][y] > 0)
 		return;
 	print_ele(map, x, y);
-	if (x != 0 && display[x - 1][y] == 0) //ÏòÉÏËÑË÷
+	if (x != 0 && display[x - 1][y] == 0) //å‘ä¸Šæœç´¢
 	{
 		if (map[x - 1][y] == 0)
 			mine_clearance(x - 1, y, map, display, size);
@@ -691,7 +691,7 @@ void mine_clearance(int x, int y, short map[COL_MAX][COL_MAX], short display[COL
 			print_ele(map, x - 1, y);
 		}
 	}
-	if (x != size - 1 && display[x + 1][y] == 0) //ÏòÏÂËÑË÷
+	if (x != size - 1 && display[x + 1][y] == 0) //å‘ä¸‹æœç´¢
 	{
 		if (map[x + 1][y] == 0)
 			mine_clearance(x + 1, y, map, display, size);
@@ -701,7 +701,7 @@ void mine_clearance(int x, int y, short map[COL_MAX][COL_MAX], short display[COL
 			print_ele(map, x + 1, y);
 		}
 	}
-	if (y != 0 && display[x][y - 1] == 0) //Ïò×óËÑË÷
+	if (y != 0 && display[x][y - 1] == 0) //å‘å·¦æœç´¢
 	{
 		if (map[x][y - 1] == 0)
 			mine_clearance(x, y - 1, map, display, size);
@@ -711,7 +711,7 @@ void mine_clearance(int x, int y, short map[COL_MAX][COL_MAX], short display[COL
 			print_ele(map, x, y - 1);
 		}
 	}
-	if (y != size - 1 && display[x][y + 1] == 0) //ÏòÓÒËÑË÷
+	if (y != size - 1 && display[x][y + 1] == 0) //å‘å³æœç´¢
 	{
 		if (map[x][y + 1] == 0)
 			mine_clearance(x, y + 1, map, display, size);
@@ -730,11 +730,11 @@ int state(short map[COL_MAX][COL_MAX], short display[COL_MAX][COL_MAX], int size
 		for (j = 0; j < size; j++)
 			if (map[i][j] == 9)
 				if (display[i][j] != 2)
-					return 0; //Î»ÖÃÉÏÓĞÀ×µ«Î´±ê×¢
+					return 0; //ä½ç½®ä¸Šæœ‰é›·ä½†æœªæ ‡æ³¨
 				else //display[i][j] == 2
-					continue; //Î»ÖÃÉÏÓĞÀ×ÇÒ±ê×¢
+					continue; //ä½ç½®ä¸Šæœ‰é›·ä¸”æ ‡æ³¨
 			else // map[i][j] != 9
 				if (display[i][j] == 2)
-					return 0; //Î»ÖÃÉÏÎŞÀ×µ«±ê×¢
-	return 1; //µØÀ×È«²¿±ê×¢ÕıÈ·£¬ÓÎÏ·½áÊø
+					return 0; //ä½ç½®ä¸Šæ— é›·ä½†æ ‡æ³¨
+	return 1; //åœ°é›·å…¨éƒ¨æ ‡æ³¨æ­£ç¡®ï¼Œæ¸¸æˆç»“æŸ
 }
