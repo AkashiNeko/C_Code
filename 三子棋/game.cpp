@@ -2,7 +2,7 @@
 
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-//ÉèÖÃÆÁÄ»´òÓ¡×ø±ê
+//è®¾ç½®å±å¹•æ‰“å°åæ ‡
 void setrd(int x, int y)
 {
 	COORD rd;
@@ -11,16 +11,16 @@ void setrd(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), rd);
 }
 
-//Ö÷²Ëµ¥
+//ä¸»èœå•
 bool menu()
 {
 	SetConsoleTextAttribute(hConsole, 0x0e);
 	setrd(10, 3);
-	cout << "=== Èı×ÓÆå ===" << endl << endl;
+	cout << "=== ä¸‰å­æ£‹ ===" << endl << endl;
 	setrd(12, 5);
-	cout << "1. ¿ªÊ¼" << endl;
+	cout << "1. å¼€å§‹" << endl;
 	setrd(12, 7);
-	cout << "2. ÍË³ö" << endl;
+	cout << "2. é€€å‡º" << endl;
 	setrd(0, 0);
 	while (1)
 	{
@@ -28,7 +28,7 @@ bool menu()
 		{
 			SetConsoleTextAttribute(hConsole, 0x0b);
 			setrd(12, 5);
-			cout << "1. ¿ªÊ¼" << endl;
+			cout << "1. å¼€å§‹" << endl;
 			Sleep(MENU_SLEEP);
 			system("cls");
 			return false;
@@ -37,7 +37,7 @@ bool menu()
 		{
 			SetConsoleTextAttribute(hConsole, 0x0b);
 			setrd(12, 7);
-			cout << "2. ÍË³ö" << endl;
+			cout << "2. é€€å‡º" << endl;
 			Sleep(MENU_SLEEP);
 			system("cls");
 			SetConsoleTextAttribute(hConsole, 0x0f);
@@ -46,16 +46,16 @@ bool menu()
 	}
 }
 
-//Ä£Ê½Ñ¡Ôñ²Ëµ¥  0-Íæ¼ÒÏÈ  1-µçÄÔÏÈ
+//æ¨¡å¼é€‰æ‹©èœå•  0-ç©å®¶å…ˆ  1-ç”µè„‘å…ˆ
 int model_select()
 {
 	SetConsoleTextAttribute(hConsole, 0x0e);
 	setrd(12, 3);
-	cout << "Ñ¡ÔñÏÈºóÊÖ";
+	cout << "é€‰æ‹©å…ˆåæ‰‹";
 	setrd(12, 5);
-	cout << "1. ÎÒÏÈ×ß";
+	cout << "1. æˆ‘å…ˆèµ°";
 	setrd(12, 7);
-	cout << "2. µçÄÔÏÈ×ß";
+	cout << "2. ç”µè„‘å…ˆèµ°";
 	setrd(0, 0);
 	while (1)
 	{
@@ -63,7 +63,7 @@ int model_select()
 		{
 			SetConsoleTextAttribute(hConsole, 0x0b);
 			setrd(12, 5);
-			cout << "1. ÎÒÏÈ×ß" << endl;
+			cout << "1. æˆ‘å…ˆèµ°" << endl;
 			SetConsoleTextAttribute(hConsole, 0x0e);
 			Sleep(MENU_SLEEP);
 			system("cls");
@@ -73,7 +73,7 @@ int model_select()
 		{
 			SetConsoleTextAttribute(hConsole, 0x0b);
 			setrd(12, 7);
-			cout << "2. µçÄÔÏÈ×ß" << endl;
+			cout << "2. ç”µè„‘å…ˆèµ°" << endl;
 			SetConsoleTextAttribute(hConsole, 0x0e);
 			Sleep(MENU_SLEEP);
 			system("cls");
@@ -82,7 +82,7 @@ int model_select()
 	}
 }
 
-//³õÊ¼»¯ÆåÅÌ
+//åˆå§‹åŒ–æ£‹ç›˜
 void resetMap(char arr[3][3])
 {
 	int i, j;
@@ -91,7 +91,7 @@ void resetMap(char arr[3][3])
 			arr[i][j] = P0;
 }
 
-//´òÓ¡ÆåÅÌ
+//æ‰“å°æ£‹ç›˜
 void printMap(char map[3][3])
 {
 	SetConsoleTextAttribute(hConsole, C0);
@@ -107,14 +107,14 @@ void printMap(char map[3][3])
 
 }
 
-//´òÓ¡Æå×Ó
+//æ‰“å°æ£‹å­
 void printPiece(char map[3][3])
 {
 	int i, j;
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
 		{
-			switch (map[i][j]) //ÔÚÆåÅÌÉÏ´òÓ¡Æå×Ó
+			switch (map[i][j]) //åœ¨æ£‹ç›˜ä¸Šæ‰“å°æ£‹å­
 			{
 			case P0:
 				setrd(7 + j * 4, 3 + i * 2);
@@ -141,16 +141,16 @@ void printPiece(char map[3][3])
 		}
 }
 
-//Íæ¼ÒÏÂÆå
+//ç©å®¶ä¸‹æ£‹
 void player_chess(char map[3][3])
 {
 	int i, s_x = N, s_y = N;
 	setrd(3, 10);
 	SetConsoleTextAttribute(hConsole, 0x08);
-	cout << "ÇëÊäÈëĞĞ±êºÍÁĞ±ê";
-	while (1) //½ÓÊÕÊäÈë×ø±ê
+	cout << "è¯·è¾“å…¥è¡Œæ ‡å’Œåˆ—æ ‡";
+	while (1) //æ¥æ”¶è¾“å…¥åæ ‡
 	{
-		if (GetAsyncKeyState('A')) //ÊäÈëA
+		if (GetAsyncKeyState('A')) //è¾“å…¥A
 		{
 			if (s_y == A) continue;
 			setrd(0, 3);
@@ -165,18 +165,18 @@ void player_chess(char map[3][3])
 			{
 				for (i = 0; i < 3; i++)
 				{
-					//½«µÚ1ĞĞ¿Õ°×»»ÎªP3
+					//å°†ç¬¬1è¡Œç©ºç™½æ¢ä¸ºP3
 					if (map[0][i] == P0) map[0][i] = P3;
-					//½«ÆäËûĞĞP3»»Îª¿Õ°×
+					//å°†å…¶ä»–è¡ŒP3æ¢ä¸ºç©ºç™½
 					if (map[1][i] == P3) map[1][i] = P0;
 					if (map[2][i] == P3) map[2][i] = P0;
 				}
 			}
 			else
 			{
-				//½«µÚ1ĞĞµÚs_xÁĞ¿Õ°×»»ÎªP3
+				//å°†ç¬¬1è¡Œç¬¬s_xåˆ—ç©ºç™½æ¢ä¸ºP3
 				if (map[0][s_x] == P0) map[0][s_x] = P3;
-				//½«ÆäËûĞĞµÚs_xÁĞP3»»Îª¿Õ°×
+				//å°†å…¶ä»–è¡Œç¬¬s_xåˆ—P3æ¢ä¸ºç©ºç™½
 				if (map[1][s_x] == P3) map[1][s_x] = P0;
 				if (map[2][s_x] == P3) map[2][s_x] = P0;
 			}
@@ -185,7 +185,7 @@ void player_chess(char map[3][3])
 			setrd(0, 0);
 			goto tips;
 		}
-		else if (GetAsyncKeyState('B')) //ÊäÈëB
+		else if (GetAsyncKeyState('B')) //è¾“å…¥B
 		{
 			if (s_y == B) continue;
 			setrd(0, 5);
@@ -200,18 +200,18 @@ void player_chess(char map[3][3])
 			{
 				for (i = 0; i < 3; i++)
 				{
-					//½«µÚ2ĞĞ¿Õ°×»»ÎªP3
+					//å°†ç¬¬2è¡Œç©ºç™½æ¢ä¸ºP3
 					if (map[1][i] == P0) map[1][i] = P3;
-					//½«ÆäËûĞĞP3»»Îª¿Õ°×
+					//å°†å…¶ä»–è¡ŒP3æ¢ä¸ºç©ºç™½
 					if (map[0][i] == P3) map[0][i] = P0;
 					if (map[2][i] == P3) map[2][i] = P0;
 				}
 			}
 			else
 			{
-				//½«µÚ2ĞĞµÚs_xÁĞ¿Õ°×»»ÎªP3
+				//å°†ç¬¬2è¡Œç¬¬s_xåˆ—ç©ºç™½æ¢ä¸ºP3
 				if (map[1][s_x] == P0) map[1][s_x] = P3;
-				//½«ÆäËûĞĞµÚs_xÁĞP3»»Îª¿Õ°×
+				//å°†å…¶ä»–è¡Œç¬¬s_xåˆ—P3æ¢ä¸ºç©ºç™½
 				if (map[0][s_x] == P3) map[0][s_x] = P0;
 				if (map[2][s_x] == P3) map[2][s_x] = P0;
 			}
@@ -220,7 +220,7 @@ void player_chess(char map[3][3])
 			setrd(0, 0);
 			goto tips;
 		}
-		else if (GetAsyncKeyState('C')) //ÊäÈëC
+		else if (GetAsyncKeyState('C')) //è¾“å…¥C
 		{
 			if (s_y == C) continue;
 			setrd(0, 7);
@@ -235,18 +235,18 @@ void player_chess(char map[3][3])
 			{
 				for (i = 0; i < 3; i++)
 				{
-					//½«µÚ3ĞĞ¿Õ°×»»ÎªP3
+					//å°†ç¬¬3è¡Œç©ºç™½æ¢ä¸ºP3
 					if (map[2][i] == P0) map[2][i] = P3;
-					//½«ÆäËûĞĞP3»»Îª¿Õ°×
+					//å°†å…¶ä»–è¡ŒP3æ¢ä¸ºç©ºç™½
 					if (map[1][i] == P3) map[1][i] = P0;
 					if (map[0][i] == P3) map[0][i] = P0;
 				}
 			}
 			else
 			{
-				//½«µÚ3ĞĞµÚs_xÁĞ¿Õ°×»»ÎªP3
+				//å°†ç¬¬3è¡Œç¬¬s_xåˆ—ç©ºç™½æ¢ä¸ºP3
 				if (map[2][s_x] == P0) map[2][s_x] = P3;
-				//½«ÆäËûĞĞµÚs_xÁĞP3»»Îª¿Õ°×
+				//å°†å…¶ä»–è¡Œç¬¬s_xåˆ—P3æ¢ä¸ºç©ºç™½
 				if (map[1][s_x] == P3) map[1][s_x] = P0;
 				if (map[0][s_x] == P3) map[0][s_x] = P0;
 			}
@@ -255,7 +255,7 @@ void player_chess(char map[3][3])
 			setrd(0, 0);
 			goto tips;
 		}
-		else if (GetAsyncKeyState('1')) //ÊäÈë1
+		else if (GetAsyncKeyState('1')) //è¾“å…¥1
 		{
 			if (s_x == 0) continue;
 			setrd(7, 1);
@@ -270,18 +270,18 @@ void player_chess(char map[3][3])
 			{
 				for (i = 0; i < 3; i++)
 				{
-					//½«µÚ1ÁĞ¿Õ°×»»ÎªP3
+					//å°†ç¬¬1åˆ—ç©ºç™½æ¢ä¸ºP3
 					if (map[i][0] == P0) map[i][0] = P3;
-					//½«ÆäËûÁĞP3»»Îª¿Õ°×
+					//å°†å…¶ä»–åˆ—P3æ¢ä¸ºç©ºç™½
 					if (map[i][1] == P3) map[i][1] = P0;
 					if (map[i][2] == P3) map[i][2] = P0;
 				}
 			}
 			else
 			{
-				//½«µÚ1ÁĞµÚs_yĞĞ¿Õ°×»»ÎªP3
+				//å°†ç¬¬1åˆ—ç¬¬s_yè¡Œç©ºç™½æ¢ä¸ºP3
 				if (map[s_y][0] == P0) map[s_y][0] = P3;
-				//½«ÆäËûÁĞµÚs_yĞĞP3»»Îª¿Õ°×
+				//å°†å…¶ä»–åˆ—ç¬¬s_yè¡ŒP3æ¢ä¸ºç©ºç™½
 				if (map[s_y][1] == P3) map[s_y][1] = P0;
 				if (map[s_y][2] == P3) map[s_y][2] = P0;
 			}
@@ -290,7 +290,7 @@ void player_chess(char map[3][3])
 			setrd(0, 0);
 			goto tips;
 		}
-		else if (GetAsyncKeyState('2')) //ÊäÈë2
+		else if (GetAsyncKeyState('2')) //è¾“å…¥2
 		{
 			if (s_x == 1) continue;
 			setrd(11, 1);
@@ -305,18 +305,18 @@ void player_chess(char map[3][3])
 			{
 				for (i = 0; i < 3; i++)
 				{
-					//½«µÚ2ÁĞ¿Õ°×»»ÎªP3
+					//å°†ç¬¬2åˆ—ç©ºç™½æ¢ä¸ºP3
 					if (map[i][1] == P0) map[i][1] = P3;
-					//½«ÆäËûÁĞP3»»Îª¿Õ°×
+					//å°†å…¶ä»–åˆ—P3æ¢ä¸ºç©ºç™½
 					if (map[i][0] == P3) map[i][0] = P0;
 					if (map[i][2] == P3) map[i][2] = P0;
 				}
 			}
 			else
 			{
-				//½«µÚ2ÁĞµÚs_yĞĞ¿Õ°×»»ÎªP3
+				//å°†ç¬¬2åˆ—ç¬¬s_yè¡Œç©ºç™½æ¢ä¸ºP3
 				if (map[s_y][1] == P0) map[s_y][1] = P3;
-				//½«ÆäËûÁĞµÚs_yĞĞP3»»Îª¿Õ°×
+				//å°†å…¶ä»–åˆ—ç¬¬s_yè¡ŒP3æ¢ä¸ºç©ºç™½
 				if (map[s_y][0] == P3) map[s_y][0] = P0;
 				if (map[s_y][2] == P3) map[s_y][2] = P0;
 			}
@@ -325,7 +325,7 @@ void player_chess(char map[3][3])
 			setrd(0, 0);
 			goto tips;
 		}
-		else if (GetAsyncKeyState('3')) //ÊäÈë3
+		else if (GetAsyncKeyState('3')) //è¾“å…¥3
 		{
 			if (s_x == 2) continue;
 			setrd(15, 1);
@@ -340,18 +340,18 @@ void player_chess(char map[3][3])
 			{
 				for (i = 0; i < 3; i++)
 				{
-					//½«µÚ3ÁĞ¿Õ°×»»ÎªP3
+					//å°†ç¬¬3åˆ—ç©ºç™½æ¢ä¸ºP3
 					if (map[i][2] == P0) map[i][2] = P3;
-					//½«ÆäËûÁĞP3»»Îª¿Õ°×
+					//å°†å…¶ä»–åˆ—P3æ¢ä¸ºç©ºç™½
 					if (map[i][0] == P3) map[i][0] = P0;
 					if (map[i][1] == P3) map[i][1] = P0;
 				}
 			}
 			else
 			{
-				//½«µÚ3ÁĞµÚs_yĞĞ¿Õ°×»»ÎªP3
+				//å°†ç¬¬3åˆ—ç¬¬s_yè¡Œç©ºç™½æ¢ä¸ºP3
 				if (map[s_y][2] == P0) map[s_y][2] = P3;
-				//½«ÆäËûÁĞµÚs_yĞĞP3»»Îª¿Õ°×
+				//å°†å…¶ä»–åˆ—ç¬¬s_yè¡ŒP3æ¢ä¸ºç©ºç™½
 				if (map[s_y][0] == P3) map[s_y][0] = P0;
 				if (map[s_y][1] == P3) map[s_y][1] = P0;
 			}
@@ -360,13 +360,13 @@ void player_chess(char map[3][3])
 			setrd(0, 0);
 			goto tips;
 		}
-		else if (GetAsyncKeyState(VK_RETURN)) //»Ø³µ
+		else if (GetAsyncKeyState(VK_RETURN)) //å›è½¦
 		{
 			if (s_y == N)
 			{
 				setrd(3, 10);
 				SetConsoleTextAttribute(hConsole, 0x0c);
-				cout << "ÇëÊäÈëĞĞ±ê(A,B,C)  ";
+				cout << "è¯·è¾“å…¥è¡Œæ ‡(A,B,C)  ";
 				setrd(0, 0);
 				continue;
 			}
@@ -374,7 +374,7 @@ void player_chess(char map[3][3])
 			{
 				setrd(3, 10);
 				SetConsoleTextAttribute(hConsole, 0x0c);
-				cout << "ÇëÊäÈëÁĞ±ê(1,2,3)  ";
+				cout << "è¯·è¾“å…¥åˆ—æ ‡(1,2,3)  ";
 				setrd(0, 0);
 				continue;
 			}
@@ -382,7 +382,7 @@ void player_chess(char map[3][3])
 			{
 				setrd(3, 10);
 				SetConsoleTextAttribute(hConsole, 0x0c);
-				cout << "¸ÃÎ»ÖÃÒÑ´æÔÚÆäËûÆå×Ó";
+				cout << "è¯¥ä½ç½®å·²å­˜åœ¨å…¶ä»–æ£‹å­";
 				setrd(0, 0);
 				continue;
 			}
@@ -391,40 +391,40 @@ void player_chess(char map[3][3])
 		if (false)
 		{
 		tips:
-			//Î´Ñ¡ÔñĞĞ±ê
+			//æœªé€‰æ‹©è¡Œæ ‡
 			if (s_y == N)
 			{
 				setrd(3, 10);
 				SetConsoleTextAttribute(hConsole, 0x08);
-				cout << "ÇëÊäÈëĞĞ±ê(A,B,C)  ";
+				cout << "è¯·è¾“å…¥è¡Œæ ‡(A,B,C)  ";
 				setrd(0, 0);
 				continue;
 			}
-			//Î´Ñ¡ÔñÁĞ±ê
+			//æœªé€‰æ‹©åˆ—æ ‡
 			if (s_x == N)
 			{
 				setrd(3, 10);
 				SetConsoleTextAttribute(hConsole, 0x08);
-				cout << "ÇëÊäÈëÁĞ±ê(1,2,3)  ";
+				cout << "è¯·è¾“å…¥åˆ—æ ‡(1,2,3)  ";
 				setrd(0, 0);
 				continue;
 			}
-			//Ñ¡Ôñ´¦´æÔÚÆäËûÆå×Ó
+			//é€‰æ‹©å¤„å­˜åœ¨å…¶ä»–æ£‹å­
 			if (map[s_y][s_x] != P3)
 			{
 				setrd(3, 10);
 				SetConsoleTextAttribute(hConsole, 0x08);
-				cout << "¸ÃÎ»ÖÃÒÑ´æÔÚÆäËûÆå×Ó";
+				cout << "è¯¥ä½ç½®å·²å­˜åœ¨å…¶ä»–æ£‹å­";
 				setrd(0, 0);
 				continue;
 			}
-			//ÔÊĞíÂä×Ó
+			//å…è®¸è½å­
 			setrd(3, 10);
 			SetConsoleTextAttribute(hConsole, 0x08);
-			cout << "°´ÏÂ»Ø³µÈ·¶¨Âä×Ó        ";
+			cout << "æŒ‰ä¸‹å›è½¦ç¡®å®šè½å­        ";
 			setrd(0, 0);
 		}
-	} //½ÓÊÕ×ø±ê½áÊø
+	} //æ¥æ”¶åæ ‡ç»“æŸ
 	map[s_y][s_x] = P1;
 	printPiece(map);
 	Sleep(100);
@@ -450,34 +450,34 @@ void player_chess(char map[3][3])
 	cout << "1   2   3";
 }
 
-//ÓÎÏ·×´Ì¬ÅĞ¶Ï  0-¼ÌĞø 1-Íæ¼ÒÊ¤ 2-µçÄÔÊ¤ 3-Æ½¾Ö
+//æ¸¸æˆçŠ¶æ€åˆ¤æ–­  0-ç»§ç»­ 1-ç©å®¶èƒœ 2-ç”µè„‘èƒœ 3-å¹³å±€
 int game_state(char map[3][3])
 {
 	int a, i, j;
 	for (a = 0; a < 3; a++)
 	{
-		if (map[a][0] != P0 && map[a][0] == map[a][1] && map[a][1] == map[a][2]) //µÚaÁĞÆå×ÓÏàÍ¬
-			if (map[a][0] == P1) //µÚaĞĞµÄÆå×ÓÊÇP1
+		if (map[a][0] != P0 && map[a][0] == map[a][1] && map[a][1] == map[a][2]) //ç¬¬aåˆ—æ£‹å­ç›¸åŒ
+			if (map[a][0] == P1) //ç¬¬aè¡Œçš„æ£‹å­æ˜¯P1
 				return plr_win;
-			else				 //µÚaĞĞµÄÆå×ÓÊÇP2
+			else				 //ç¬¬aè¡Œçš„æ£‹å­æ˜¯P2
 				return cpt_win;
-		if (map[0][a] != P0 && map[0][a] == map[1][a] && map[1][a] == map[2][a]) //µÚaÁĞÆå×ÓÏàÍ¬
-			if (map[0][a] == P1) //µÚaÁĞµÄÆå×ÓÊÇP1
+		if (map[0][a] != P0 && map[0][a] == map[1][a] && map[1][a] == map[2][a]) //ç¬¬aåˆ—æ£‹å­ç›¸åŒ
+			if (map[0][a] == P1) //ç¬¬aåˆ—çš„æ£‹å­æ˜¯P1
 				return plr_win;
-			else				 //µÚaÁĞµÄÆå×ÓÊÇP2
+			else				 //ç¬¬aåˆ—çš„æ£‹å­æ˜¯P2
 				return cpt_win;
 	}
-	//ÅĞ¶ÏÖ÷¶Ô½ÇÏßÆå×Ó
-	if (map[0][0] != P0 && map[0][0] == map[1][1] && map[1][1] == map[2][2]) //Ö÷¶Ô½ÇÏßÆå×ÓÏàÍ¬
-		if (map[0][0] == P1) //Ö÷¶Ô½ÇÏßµÄÆå×ÓÊÇP1
+	//åˆ¤æ–­ä¸»å¯¹è§’çº¿æ£‹å­
+	if (map[0][0] != P0 && map[0][0] == map[1][1] && map[1][1] == map[2][2]) //ä¸»å¯¹è§’çº¿æ£‹å­ç›¸åŒ
+		if (map[0][0] == P1) //ä¸»å¯¹è§’çº¿çš„æ£‹å­æ˜¯P1
 			return plr_win;
-		else				 //Ö÷¶Ô½ÇÏßµÄÆå×ÓÊÇP2
+		else				 //ä¸»å¯¹è§’çº¿çš„æ£‹å­æ˜¯P2
 			return cpt_win;
-	//ÅĞ¶Ï¸±¶Ô½ÇÏßÆå×Ó
-	if (map[0][2] != P0 && map[0][2] == map[1][1] && map[1][1] == map[2][0]) //¸±¶Ô½ÇÏßÆå×ÓÏàÍ¬
-		if (map[0][2] == P1) //¸±¶Ô½ÇÏßµÄÆå×ÓÊÇP1
+	//åˆ¤æ–­å‰¯å¯¹è§’çº¿æ£‹å­
+	if (map[0][2] != P0 && map[0][2] == map[1][1] && map[1][1] == map[2][0]) //å‰¯å¯¹è§’çº¿æ£‹å­ç›¸åŒ
+		if (map[0][2] == P1) //å‰¯å¯¹è§’çº¿çš„æ£‹å­æ˜¯P1
 			return plr_win;
-		else				 //¸±¶Ô½ÇÏßµÄÆå×ÓÊÇP2
+		else				 //å‰¯å¯¹è§’çº¿çš„æ£‹å­æ˜¯P2
 			return cpt_win;
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
@@ -486,25 +486,25 @@ int game_state(char map[3][3])
 	return draw;
 }
 
-//µçÄÔÏÂÆå
+//ç”µè„‘ä¸‹æ£‹
 void computer_chess(char map[3][3])
 {
 	int i, j, space_num = 0;
 	char* space[8];
 	setrd(3, 10);
 	SetConsoleTextAttribute(hConsole, 0x08);
-	cout << "µÈ´ıµçÄÔÏÂÆå\t\t\t";
+	cout << "ç­‰å¾…ç”µè„‘ä¸‹æ£‹\t\t\t";
 	setrd(0, 0);
-	//ÖĞ¼äÃ»ÓĞ×ÓÊ±£¬×ßÖĞ¼ä
+	//ä¸­é—´æ²¡æœ‰å­æ—¶ï¼Œèµ°ä¸­é—´
 	if (map[1][1] == P0)
 	{
 		map[1][1] = P2;
 		return;
 	}
-	//ÈıµãÁ¬ÏßÉÏÓĞ×Ô¼ºµÄÁ½¸ö×ÓÊ±
+	//ä¸‰ç‚¹è¿çº¿ä¸Šæœ‰è‡ªå·±çš„ä¸¤ä¸ªå­æ—¶
 	for (i = 0; i < 3; i++)
 	{
-		//ÅĞ¶Ï3ĞĞÄÚÊÇ·ñÓĞÏàÍ¬µÄ×Ô¼ºµÄÁ½×Ó
+		//åˆ¤æ–­3è¡Œå†…æ˜¯å¦æœ‰ç›¸åŒçš„è‡ªå·±çš„ä¸¤å­
 		if (map[i][0] == P2 && map[i][2] == P0 && map[i][0] == map[i][1]) //i,0 = i,1
 		{
 			map[i][2] = P2;
@@ -520,7 +520,7 @@ void computer_chess(char map[3][3])
 			map[i][1] = P2;
 			return;
 		}
-		//ÅĞ¶Ï3ÁĞÄÚÊÇ·ñÓĞÏàÍ¬µÄ×Ô¼ºµÄÁ½×Ó
+		//åˆ¤æ–­3åˆ—å†…æ˜¯å¦æœ‰ç›¸åŒçš„è‡ªå·±çš„ä¸¤å­
 		if (map[0][i] == P2 && map[2][i] == P0 && map[0][i] == map[1][i]) //0,i = 1,i
 		{
 			map[2][i] = P2;
@@ -537,7 +537,7 @@ void computer_chess(char map[3][3])
 			return;
 		}
 	}
-	//ÅĞ¶ÏÖ÷¶Ô½ÇÏßÉÏÊÇ·ñÓĞÏàÍ¬µÄ×Ô¼ºµÄÁ½¸ö×Ó
+	//åˆ¤æ–­ä¸»å¯¹è§’çº¿ä¸Šæ˜¯å¦æœ‰ç›¸åŒçš„è‡ªå·±çš„ä¸¤ä¸ªå­
 	if (map[0][0] == P2 && map[2][2] == P0 && map[0][0] == map[1][1]) //0,0 = 1,1 -> 2,2
 	{
 		map[2][2] = P2;
@@ -548,7 +548,7 @@ void computer_chess(char map[3][3])
 		map[0][0] = P2;
 		return;
 	}
-	//ÅĞ¶Ï¸±¶Ô½ÇÏßÉÏÊÇ·ñÓĞÏàÍ¬µÄ×Ô¼ºµÄÁ½¸ö×Ó
+	//åˆ¤æ–­å‰¯å¯¹è§’çº¿ä¸Šæ˜¯å¦æœ‰ç›¸åŒçš„è‡ªå·±çš„ä¸¤ä¸ªå­
 	if (map[0][2] == P2 && map[2][0] == P0 && map[0][2] == map[1][1]) //0,2 = 1,1 -> 2,0
 	{
 		map[2][0] = P2;
@@ -560,10 +560,10 @@ void computer_chess(char map[3][3])
 		return;
 	}
 
-	//ÈıµãÁ¬ÏßÉÏÃ»ÓĞ×Ô¼ºµÄÁ½¸ö×Ó£¬ÇÒÓĞÍæ¼ÒµÄÁ½¸ö×ÓÊ±
+	//ä¸‰ç‚¹è¿çº¿ä¸Šæ²¡æœ‰è‡ªå·±çš„ä¸¤ä¸ªå­ï¼Œä¸”æœ‰ç©å®¶çš„ä¸¤ä¸ªå­æ—¶
 	for (i = 0; i < 3; i++)
 	{
-		//ÅĞ¶Ï3ĞĞÄÚÊÇ·ñÓĞÏàÍ¬µÄ¶Ô·½µÄÁ½×Ó
+		//åˆ¤æ–­3è¡Œå†…æ˜¯å¦æœ‰ç›¸åŒçš„å¯¹æ–¹çš„ä¸¤å­
 		if (map[i][0] == P1 && map[i][2] == P0 && map[i][0] == map[i][1]) //i,0 = i,1
 		{
 			map[i][2] = P2;
@@ -579,7 +579,7 @@ void computer_chess(char map[3][3])
 			map[i][1] = P2;
 			return;
 		}
-		//ÅĞ¶Ï3ÁĞÄÚÊÇ·ñÓĞÏàÍ¬µÄ¶Ô·½µÄÁ½×Ó
+		//åˆ¤æ–­3åˆ—å†…æ˜¯å¦æœ‰ç›¸åŒçš„å¯¹æ–¹çš„ä¸¤å­
 		if (map[0][i] == P1 && map[2][i] == P0 && map[0][i] == map[1][i]) //0,i = 1,i
 		{
 			map[2][i] = P2;
@@ -596,7 +596,7 @@ void computer_chess(char map[3][3])
 			return;
 		}
 	}
-	//ÅĞ¶ÏÖ÷¶Ô½ÇÏßÉÏÊÇ·ñÓĞÏàÍ¬µÄÍæ¼ÒµÄÁ½¸ö×Ó
+	//åˆ¤æ–­ä¸»å¯¹è§’çº¿ä¸Šæ˜¯å¦æœ‰ç›¸åŒçš„ç©å®¶çš„ä¸¤ä¸ªå­
 	if (map[0][0] == P1 && map[2][2] == P0 && map[0][0] == map[1][1]) //0,0 = 1,1 -> 2,2
 	{
 		map[2][2] = P2;
@@ -607,7 +607,7 @@ void computer_chess(char map[3][3])
 		map[0][0] = P2;
 		return;
 	}
-	//ÅĞ¶Ï¸±¶Ô½ÇÏßÉÏÊÇ·ñÓĞÏàÍ¬µÄÍæ¼ÒµÄÁ½¸ö×Ó
+	//åˆ¤æ–­å‰¯å¯¹è§’çº¿ä¸Šæ˜¯å¦æœ‰ç›¸åŒçš„ç©å®¶çš„ä¸¤ä¸ªå­
 	if (map[0][2] == P1 && map[2][0] == P0 && map[0][2] == map[1][1]) //0,2 = 1,1 -> 2,0
 	{
 		map[2][0] = P2;
@@ -619,7 +619,7 @@ void computer_chess(char map[3][3])
 		return;
 	}
 
-	//ÈıµãÁ¬ÏßÉÏÃ»ÓĞ×Ô¼ºµÄÁ½¸ö×ÓÒ²Ã»ÓĞÍæ¼ÒµÄÁ½¸ö×ÓÊ±
+	//ä¸‰ç‚¹è¿çº¿ä¸Šæ²¡æœ‰è‡ªå·±çš„ä¸¤ä¸ªå­ä¹Ÿæ²¡æœ‰ç©å®¶çš„ä¸¤ä¸ªå­æ—¶
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
 			if (map[i][j] == P0)
@@ -632,16 +632,3 @@ void computer_chess(char map[3][3])
 	*space[rand() % space_num] = P2;
 	SetConsoleTextAttribute(hConsole, C0);
 }
-
-
-
-/*
-       1   2   3
-      --- --- ---
-   A | O |   |   |
-      --- --- ---
-   B |   | X |   |
-      --- --- ---
-   C |   |   |   |
-      --- --- ---
-*/
