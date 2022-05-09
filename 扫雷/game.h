@@ -22,6 +22,9 @@
 #include <conio.h>
 #include <stdio.h>
 
+
+
+
 //设置控制台光标位置
 void setrd(int, int);
 //设置输出颜色

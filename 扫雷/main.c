@@ -1,12 +1,13 @@
 //*********************************************************//
 //                                                         //
 //      data:   2022-5-8                                   //
-//      author: Akashi (æ°Ÿæ°Ÿ)                              //
+//      author: Akashi (·ú·ú)                              //
 //      github: https://github.com/AkashiNeko/C_Code       //
 //      gitee:  https://gitee.com/AkashiNeko/C_Code        //
 //      QQ:     1006554341                                 //
 //                                                         //
 //*********************************************************//
+
 
 #include "game.h"
 
@@ -28,24 +29,24 @@ void setcl(int color)
 int game(short map[COL_MAX][COL_MAX], int size, int mine)
 {
 	int play_ret;
-	//æ‰“å°åœ°å›¾
+	//´òÓ¡µØÍ¼
 	do
 	{
-		short display[COL_MAX][COL_MAX]; //æ˜¯å¦æ˜¾ç¤ºï¼ˆé®ç½©ï¼‰
+		short display[COL_MAX][COL_MAX]; //ÊÇ·ñÏÔÊ¾£¨ÕÚÕÖ£©
 		print_map(map, size, display);
 		memset(display, 0, sizeof(display));
-		memset(map, 0, sizeof(display)); //åˆå§‹åŒ–
-		//è®¾ç½®é›·
+		memset(map, 0, sizeof(display)); //³õÊ¼»¯
+		//ÉèÖÃÀ×
 		set_mine(map, size, mine);
-		
-		//åˆå§‹åŒºåŸŸ
+
+		//³õÊ¼ÇøÓò
 		initial_area(map, size, display);
 
-		//ç©å®¶æ“ä½œ
+		//Íæ¼Ò²Ù×÷
 		play_ret = play(map, size, display);
-		if (play_ret == 1) //é€€å‡º
+		if (play_ret == 1) //ÍË³ö
 			return 1;
-		if (play_ret == 2) //é‡å¼€
+		if (play_ret == 2) //ÖØ¿ª
 			continue;
 	} while (1);
 
@@ -56,14 +57,14 @@ int main()
 	short map[COL_MAX][COL_MAX];
 	int size = 15, mine = 50, game_ret;
 	h = GetStdHandle(STD_OUTPUT_HANDLE);
-	system("title æ‰«é›·       By AkashiNeko");
-	memset(map, 0, sizeof(map)); //åˆå§‹åŒ–
+	system("title É¨À×       By AkashiNeko");
+	memset(map, 0, sizeof(map)); //³õÊ¼»¯
 	setcl(0x0f);
 start:
 	switch (menu())
 	{
 	case 0:
-		//å¼€å§‹
+		//¿ªÊ¼
 		game_ret = game(map, size, mine);
 		if (game_ret)
 		{
@@ -73,14 +74,14 @@ start:
 		}
 		break;
 	case 1:
-		//è®¾ç½®
+		//ÉèÖÃ
 		menu_set(&size, &mine);
 		setcl(0x0f);
 		system("cls");
 		goto start;
 		break;
 	case 2:
-		//é€€å‡º
+		//ÍË³ö
 		return 0;
 	}
 	return 0;
