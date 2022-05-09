@@ -1,12 +1,12 @@
-//**********************************************************//
-//                                                          //
-//      data:   2022-5-8                                    //
-//      author: Akashi (氟氟)                               //
-//      github: https://github.com/AkashiNeko/C_Code        //
-//      gitee:  https://gitee.com/AkashiNeko/C_Code         //
-//      QQ:     1006554341                                  //
-//                                                          //
-//**********************************************************//
+//*********************************************************//
+//                                                         //
+//      data:   2022-5-8                                   //
+//      author: Akashi (氟氟)                              //
+//      github: https://github.com/AkashiNeko/C_Code       //
+//      gitee:  https://gitee.com/AkashiNeko/C_Code        //
+//      QQ:     1006554341                                 //
+//                                                         //
+//*********************************************************//
 
 #include "game.h"
 
