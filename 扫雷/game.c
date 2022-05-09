@@ -357,7 +357,7 @@ void print_map(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL
 	printf("[Ｅ]  退出");
 }
 
-void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state)
+void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state, short display[COL_MAX][COL_MAX])
 {
 	int i, j;
 	char num[17] = "１２３４５６７８";
@@ -412,7 +412,30 @@ void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state)
 		{
 			for (j = 0; j < size; j++)
 			{
-				print_ele(map, i, j);
+				if (display[i][j] == 2 || map[i][j] == 9)
+				{
+					setrd(4 + j * 2, i + 2);
+					if (display[i][j] == 2 && map[i][j] != 9)		 //标记错误
+					{
+						setcl(0xfc);
+						printf(SIGN_MINE);
+					}
+					else if (display[i][j] != 2 && map[i][j] == 9)	 //雷未标记
+					{
+						setcl(0x40);
+						printf(MINE);
+					}
+					else											 //标记正确
+					{
+						setcl(0xa0);
+						printf(MINE);
+					}
+
+				}
+				else
+				{
+					print_ele(map, i, j);
+				}
 			}
 		}
 	}
@@ -527,7 +550,7 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 				}
 				if (state(map, display, size)) //排雷成功
 				{
-					print_all_mine(map, size, 1);
+					print_all_mine(map, size, 1, display);
 					over = 1;
 				}
 				break;
@@ -543,7 +566,7 @@ int play(short map[COL_MAX][COL_MAX], int size, short display[COL_MAX][COL_MAX])
 				case 0:
 					if (map[plr.x][plr.y] == 9)
 					{
-						print_all_mine(map, size, 0);
+						print_all_mine(map, size, 0, display);
 						over = 1;
 						break;
 					}

@@ -34,11 +34,11 @@ void menu_set(int*, int*);
 //打印地图
 void print_map(short[COL_MAX][COL_MAX], int, short[COL_MAX][COL_MAX]);
 //打印提示
-void print_tips(int, int, char[30]);
+void print_tips(int, int, char*);
 //放置雷
 void set_mine(short[COL_MAX][COL_MAX], int, int);
 //打印雷
-void print_all_mine(short[COL_MAX][COL_MAX], int, int);
+void print_all_mine(short[COL_MAX][COL_MAX], int, int, short[COL_MAX][COL_MAX]);
 //玩家操作
 int play(short[COL_MAX][COL_MAX], int, short[COL_MAX][COL_MAX]);
 //状态判断
