@@ -430,7 +430,6 @@ void print_all_mine(short map[COL_MAX][COL_MAX], int size, int state, short disp
 						setcl(0xa0);
 						printf(MINE);
 					}
-
 				}
 				else
 				{

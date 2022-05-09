@@ -6,7 +6,6 @@
 #define MINE "★"				//雷（明示）
 #define SIGN_MINE "☆"			//雷（标记）
 #define SPACE "　"				//边界
-#define BOD "■"					//
 #define MINE_COLOR 0x40			//雷
 #define MENU_COLOR 0x0e			//菜单
 #define MAP_COLOR 0x8f			//地图框架
