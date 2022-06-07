@@ -7,13 +7,13 @@
 //                                                     //
 //*****************************************************//
 
-#include <vcruntime.h>		//size_t, NULL
-#include <assert.h>			//assert
+#include <vcruntime.h>  //size_t, NULL
+#include <assert.h>     //assert
 
-#include <stdio.h>			//printf 测试用
+#include <stdio.h>      //printf 测试用
 
 /***************************************/
-/****    string部分库函数的模拟实现    ****/
+/****    string部分库函数的模拟实现   ****/
 /***************************************/
 /****        1.  my_strlen          ****/
 /****        2.  my_strcpy          ****/
