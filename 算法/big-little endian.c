@@ -1,4 +1,13 @@
-﻿#include <stdio.h>
+//*******************************************************//
+//                                                       //
+//    date:   2022-6-8                                   //
+//    author: Akashi (氟氟)                               //
+//    github: https://github.com/AkashiNeko/C_Code       //
+//    QQ:     1006554341                                 //
+//                                                       //
+//*******************************************************//
+
+#include <stdio.h>
 
 int isLittleEndian()
 {
